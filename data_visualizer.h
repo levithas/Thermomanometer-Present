@@ -68,8 +68,46 @@ class DataVisualizer
       float temperature = getTemperature();
       float pressure = getPressure();
       
-      drawLEDScala(0, 10, true, 15.0, 35.0, temperature, strip.Color(0,0,255), strip.Color(255,0,0));
-      drawLEDScala(10, 10, false, 95000.0, 105000.0, pressure, strip.Color(0,255,255), strip.Color(255,255,0));
+      float minTemp, maxTemp;
+      float minPress, maxPress;
+      uint32_t minColorTemp, maxColorTemp, minColorPress, maxColorPress;
+
+      if(temperature < 10)
+      {
+        minTemp = 1.0;// °C
+        maxTemp = 10.0;// °C
+        minColorTemp = strip.Color(255,255,255);
+        maxColorTemp = strip.Color(255,255,0);
+      }
+      else if(temperature < 20)
+      {
+        minTemp = 10.0;// °C
+        maxTemp = 20.0;// °C
+        minColorTemp = strip.Color(255,255,0);
+        maxColorTemp = strip.Color(0,255,0);
+      }
+      else if(temperature < 30)
+      {
+        minTemp = 20.0;// °C
+        maxTemp = 30.0;// °C
+        minColorTemp = strip.Color(0,255,0);
+        maxColorTemp = strip.Color(255,160,0);
+      }
+      else
+      {
+        minTemp = 30.0;// °C
+        maxTemp = 40.0;// °C
+        minColorTemp = strip.Color(255,160,0);
+        maxColorTemp = strip.Color(255,0,0);
+      }
+
+      minPress = 95000.0; //Pa
+      maxPress = 105000.0; //Pa
+      minColorPress = strip.Color(255,0,255);
+      maxColorPress = strip.Color(255,0,160);
+
+      drawLEDScala(0, 10, true, minTemp, maxTemp, temperature, minColorTemp, maxColorTemp);
+      drawLEDScala(10, 10, false, minPress, maxPress, pressure, minColorPress, maxColorPress);
       strip.show();
 
       // Debugging
@@ -83,7 +121,24 @@ class DataVisualizer
     void showHexMessage(const std::string &message, const uint8_t pos) {
       for(uint32_t i = 0;i<strip.numPixels(); i++)
       {
-        strip.setPixelColor(i, strip.Color(255,255,0));
+        uint32_t color = 0;
+        if(i < 8)
+        {
+          // Encoding of the message
+          if((message[pos] >> i) & 1)
+          {
+            color = strip.Color(255,0,0);
+          }
+        }
+        else
+        {
+          // Showing the position of the current character in the message
+          if(pos == i + 8)
+          {
+            color = strip.Color(0,0,255);
+          }
+        }
+        strip.setPixelColor(i, color);  
       }
       strip.show();
     }
