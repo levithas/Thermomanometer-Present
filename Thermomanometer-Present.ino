@@ -8,18 +8,23 @@ enum STATE {
   PRESSTEMP, MESSAGE, WAITFORWARM
 };
 
+
 STATE currentState = STATE::PRESSTEMP;
 
+
+// Message State
 uint8_t messagePosition = 0;
 std::string message = "Hallo Du";
 
+// WaitForWarm Sate
 uint8_t brightness = 0;
 bool brightnessUp = true;
+
 
 uint32_t updateWaitForWarm() {
   float temperature = dv->getTemperature();
   
-  if(temperature > 17.0) {
+  if(temperature > 3.14159) {
     currentState = STATE::MESSAGE;
     messagePosition = 0;
   }
@@ -47,13 +52,13 @@ uint32_t updateMessage() {
     currentState = STATE::PRESSTEMP;
   }
 
-  return 2000;
+  return 4000;
 }
 
 uint32_t updatePressureTemperatureDisplay() {
   // Normal Temperature and Pressure Display
 
-  if(dv->getTemperature() < 12.0)
+  if(dv->getTemperature() < 1.0)
   {
     currentState = STATE::WAITFORWARM;
     brightnessUp = true;

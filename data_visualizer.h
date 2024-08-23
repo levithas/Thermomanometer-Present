@@ -104,7 +104,7 @@ class DataVisualizer
       minPress = 95000.0; //Pa
       maxPress = 105000.0; //Pa
       minColorPress = strip.Color(255,0,255);
-      maxColorPress = strip.Color(255,0,160);
+      maxColorPress = strip.Color(255,0,0);
 
       drawLEDScala(0, 10, true, minTemp, maxTemp, temperature, minColorTemp, maxColorTemp);
       drawLEDScala(10, 10, false, minPress, maxPress, pressure, minColorPress, maxColorPress);
@@ -122,10 +122,18 @@ class DataVisualizer
       for(uint32_t i = 0;i<strip.numPixels(); i++)
       {
         uint32_t color = 0;
-        if(i < 8)
+        if(i == 0)
+        {
+          color = strip.Color(0,255,255);
+        }
+        else if(i == 8)
+        {
+          color = strip.Color(0,255,255);
+        }
+        else if(i < 8)
         {
           // Encoding of the message
-          if((message[pos] >> i) & 1)
+          if((message[pos] >> (i-1)) & 1)
           {
             color = strip.Color(255,0,0);
           }
@@ -133,12 +141,12 @@ class DataVisualizer
         else
         {
           // Showing the position of the current character in the message
-          if(pos == i + 8)
+          if(pos == i + 10)
           {
             color = strip.Color(0,0,255);
           }
         }
-        strip.setPixelColor(i, color);  
+        strip.setPixelColor(i, color);
       }
       strip.show();
     }
