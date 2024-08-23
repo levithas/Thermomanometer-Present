@@ -19,12 +19,13 @@ std::map<CODE, uint8_t> code{
 
 class Morser {
 
-  CODE message[46] = {
+  const static uint8_t codeLength = 55;
+  CODE message[codeLength] = {
     LONG, LONG, NEXT, SHORT, LONG, NEXT, LONG, SHORT, LONG, SHORT, NEXT, SHORT, SHORT, SHORT, SHORT
   , WORD, LONG , LONG, NEXT, SHORT, SHORT, NEXT, LONG, SHORT, LONG, SHORT, NEXT, SHORT, SHORT, SHORT, SHORT
   , WORD, SHORT, NEXT, SHORT, SHORT, NEXT, SHORT, SHORT, SHORT, NEXT, LONG, SHORT, LONG, NEXT, SHORT, LONG, NEXT, SHORT, LONG, SHORT, SHORT, NEXT, LONG, PAUSE
   };
-
+  
   uint8_t currentLetter = 0;
   uint8_t step = 0;
   bool pause = false;
@@ -75,7 +76,7 @@ class Morser {
         step = 0;
       }
 
-      if(currentLetter >= 46)
+      if(currentLetter >= codeLength)
       {
         currentLetter = 0;
         repeats++;

@@ -13,6 +13,8 @@ STATE currentState = STATE::PRESSTEMP;
 
 
 // Message State
+uint8_t messageRepeats = 0;
+const uint8_t MaxMessageRepeats = 3;
 uint8_t messagePosition = 0;
 std::string message = "Hallo Du";
 
@@ -27,6 +29,7 @@ uint32_t updateWaitForWarm() {
   if(temperature > 3.14159) {
     currentState = STATE::MESSAGE;
     messagePosition = 0;
+    messageRepeats = 0;
   }
   else
   {
@@ -44,12 +47,17 @@ uint32_t updateWaitForWarm() {
 
 uint32_t updateMessage() {
   // HEX Message Display
-
   dv->showHexMessage(message, messagePosition);
   messagePosition++;
+
   if(messagePosition >= message.size())
   {
-    currentState = STATE::PRESSTEMP;
+    if(messageRepeats >= MaxMessageRepeats)
+    {
+      currentState = STATE::PRESSTEMP;
+    }
+    messageRepeats++;
+    messagePosition = 0;
   }
 
   return 4000;
