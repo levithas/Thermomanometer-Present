@@ -10,5 +10,5 @@ This program displays the current temperature and air pressure on an LED strip. 
 The microcontroller is powered by the build-in USB port.
 
 ### Motivation
-This tool is created by a group of students as a gift for a very talented and generous colleague!
+This tool is created by a group of students as a gift for a very, very, very talented and generous colleague!
 ![A rubber duck for the crowd, a proud scout](Assets/duck.png)
