@@ -19,7 +19,7 @@ bool brightnessUp = true;
 uint32_t updateWaitForWarm() {
   float temperature = dv->getTemperature();
   
-  if(temperature > 18.0) {
+  if(temperature > 17.0) {
     currentState = STATE::MESSAGE;
     messagePosition = 0;
   }
@@ -53,7 +53,7 @@ uint32_t updateMessage() {
 uint32_t updatePressureTemperatureDisplay() {
   // Normal Temperature and Pressure Display
 
-  if(dv->getTemperature() < 15.0)
+  if(dv->getTemperature() < 12.0)
   {
     currentState = STATE::WAITFORWARM;
     brightnessUp = true;

@@ -145,7 +145,7 @@ class DataVisualizer
     void solidColor(uint8_t brightness){
       for(uint32_t i = 0;i<strip.numPixels();i++)
       {
-        strip.setPixelColor(i, strip.Color(255,255,0,brightness));
+        strip.setPixelColor(i, strip.Color(brightness,brightness,0));
       }
       strip.show();
     }
