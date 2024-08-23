@@ -126,11 +126,7 @@ class DataVisualizer
         {
           color = strip.Color(0,255,255);
         }
-        else if(i == 8)
-        {
-          color = strip.Color(0,255,255);
-        }
-        else if(i < 8)
+        else if(i < 10)
         {
           // Encoding of the message
           if((message[pos] >> (i-1)) & 1)
@@ -138,10 +134,14 @@ class DataVisualizer
             color = strip.Color(255,0,0);
           }
         }
+        else if(i == 10)
+        {
+          color = strip.Color(0,255,255);
+        }
         else
         {
           // Showing the position of the current character in the message
-          if(pos == i + 10)
+          if(pos == i - 11)
           {
             color = strip.Color(0,0,255);
           }
