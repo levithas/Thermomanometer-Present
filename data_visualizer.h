@@ -103,8 +103,8 @@ class DataVisualizer
 
       minPress = 95000.0; //Pa
       maxPress = 105000.0; //Pa
-      minColorPress = strip.Color(255,0,255);
-      maxColorPress = strip.Color(255,0,0);
+      minColorPress = strip.Color(60,0,255);
+      maxColorPress = strip.Color(255,60,200);
 
       drawLEDScala(0, 10, true, minTemp, maxTemp, temperature, minColorTemp, maxColorTemp);
       drawLEDScala(10, 10, false, minPress, maxPress, pressure, minColorPress, maxColorPress);
