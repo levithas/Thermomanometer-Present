@@ -77,13 +77,13 @@ class DataVisualizer
         minTemp = 1.0;// °C
         maxTemp = 10.0;// °C
         minColorTemp = strip.Color(255,255,255);
-        maxColorTemp = strip.Color(255,255,0);
+        maxColorTemp = strip.Color(128,255,255);
       }
       else if(temperature < 20)
       {
         minTemp = 10.0;// °C
         maxTemp = 20.0;// °C
-        minColorTemp = strip.Color(255,255,0);
+        minColorTemp = strip.Color(128,255,255);
         maxColorTemp = strip.Color(0,255,0);
       }
       else if(temperature < 30)
