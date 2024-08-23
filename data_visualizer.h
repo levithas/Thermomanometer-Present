@@ -142,4 +142,11 @@ class DataVisualizer
       }
       strip.show();
     }
+    void solidColor(uint8_t brightness){
+      for(uint32_t i = 0;i<strip.numPixels();i++)
+      {
+        strip.setPixelColor(i, strip.Color(255,255,0,brightness));
+      }
+      strip.show();
+    }
 };
