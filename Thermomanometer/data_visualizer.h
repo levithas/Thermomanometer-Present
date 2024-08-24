@@ -1,3 +1,6 @@
+#ifndef DATA_VISUALIZER_H
+#define DATA_VISUALIZER_H
+
 #include <Adafruit_NeoPixel.h>
 #include "BMP085.h"
 #include <Wire.h>
@@ -158,3 +161,5 @@ class DataVisualizer
       strip.show();
     }
 };
+
+#endif

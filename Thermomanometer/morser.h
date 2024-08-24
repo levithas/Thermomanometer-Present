@@ -1,23 +1,27 @@
+#ifndef MORSER_H
+#define MORSER_H
+
 #include <map>
 
-
 #define LED_PIN 15
-
 
 enum CODE {
   DIT, LONG, SHORT, NEXT, WORD, PAUSE
 };
 
-std::map<CODE, uint8_t> code{
-  {CODE::DIT, 3},
-  {CODE::LONG, 9},
-  {CODE::SHORT, 3},
-  {CODE::NEXT, 9},
-  {CODE::WORD, 21},
-  {CODE::PAUSE, 60}
-};
+
 
 class Morser {
+private:
+  std::map<CODE, uint8_t> code
+  {
+    {CODE::DIT, 3},
+    {CODE::LONG, 9},
+    {CODE::SHORT, 3},
+    {CODE::NEXT, 9},
+    {CODE::WORD, 21},
+    {CODE::PAUSE, 60}
+  };
 
   const static uint8_t codeLength = 55;
   CODE message[codeLength] = {
@@ -83,3 +87,5 @@ class Morser {
       }
     }
 };
+
+#endif
