@@ -1,5 +1,5 @@
 # Thermomanometer
-This program displays the current temperature and air pressure on an LED strip. Temperature is shown in °C and air pressure in hPa.
+The program displays the current temperature and air pressure on an LED strip. Temperature is shown in °C and air pressure in hPa. For a little twist, there is a riddle hidden inside the program, that displays a message when specific parameters are met.
 
 ### Hardware
 - ESP8266 (Microcontroller)
@@ -10,5 +10,5 @@ This program displays the current temperature and air pressure on an LED strip. 
 The microcontroller is powered by the build-in USB port.
 
 ### Motivation
-This tool is created by a group of students as a gift for a very, very, very talented and generous colleague!
+This tool was created and is maintained by a group of students as a gift for a very, very, very talented and generous colleague!
 ![A rubber duck for the crowd, a proud scout](Assets/duck.png)
