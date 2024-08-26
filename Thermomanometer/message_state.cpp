@@ -21,3 +21,5 @@ uint32_t MessageState::handle(Context& context)
 
   return 4000;
 }
+
+MessageState::MessageState(const std::string& message) : message(message) {}
