@@ -9,6 +9,11 @@ The program displays the current temperature and air pressure on an LED strip. T
 
 The microcontroller is powered by the build-in USB port.
 
+### Our final proDuck(t)
+![Front display](Assets/front.png)
+![Back side](Assets/back.png)
+
 ### Motivation
 This tool was created and is maintained by a group of students as a gift for a very, very, very talented and generous colleague!
+
 ![A rubber duck for the crowd, a proud scout](Assets/duck.png)
