@@ -75,31 +75,31 @@ class DataVisualizer
       float minPress, maxPress;
       uint32_t minColorTemp, maxColorTemp, minColorPress, maxColorPress;
 
-      if(temperature < 10)
+      if(temperature < 10.5)
       {
-        minTemp = 1.0;// °C
-        maxTemp = 10.0;// °C
+        minTemp = 0.5;// °C
+        maxTemp = 10.5;// °C
         minColorTemp = strip.Color(255,255,255);
         maxColorTemp = strip.Color(128,255,255);
       }
-      else if(temperature < 20)
+      else if(temperature < 20.5)
       {
-        minTemp = 10.0;// °C
-        maxTemp = 20.0;// °C
+        minTemp = 10.5;// °C
+        maxTemp = 20.5;// °C
         minColorTemp = strip.Color(128,255,255);
         maxColorTemp = strip.Color(0,255,0);
       }
-      else if(temperature < 30)
+      else if(temperature < 30.5)
       {
-        minTemp = 20.0;// °C
-        maxTemp = 30.0;// °C
+        minTemp = 20.5;// °C
+        maxTemp = 30.5;// °C
         minColorTemp = strip.Color(0,255,0);
         maxColorTemp = strip.Color(255,160,0);
       }
       else
       {
-        minTemp = 30.0;// °C
-        maxTemp = 40.0;// °C
+        minTemp = 30.5;// °C
+        maxTemp = 40.5;// °C
         minColorTemp = strip.Color(255,160,0);
         maxColorTemp = strip.Color(255,0,0);
       }
