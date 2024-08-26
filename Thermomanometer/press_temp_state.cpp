@@ -1,13 +1,25 @@
 #include "context.h"
 #include "press_temp_state.h"
 #include "wait_for_warm_state.h"
+#include "message_state.h"
 
 uint32_t PressTempState::handle(Context& context) 
 {
   // Normal Temperature and Pressure Display
   if(context.getDV().getTemperature() < MinTemperature)
   {
-    context.setState(new WaitForWarmState());
+    context.setState(new WaitForWarmState(*(new MessageState("Danke, André!")), MinTemperature+3.14159));
+    return 0;
+  } 
+  else if(context.getDV().getPressure() > 105000.00)
+  {
+    context.setState(new MessageState(""));
+    return 0;
+  }
+
+  if (--superSecretClueTimer == 0)
+  {
+    context.setState(new MessageState("Setz mich unter Druck!"));
     return 0;
   }
 

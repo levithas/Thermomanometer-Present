@@ -2,12 +2,14 @@
 #include "message_state.h"
 #include "wait_for_warm_state.h"
 
+WaitForWarmState::WaitForWarmState(State& nextState, const float thresholdTemperature) : nextState(&nextState), thresholdTemperature(thresholdTemperature) {}
+
 uint32_t WaitForWarmState::handle(Context& context) 
     {
       float temperature = context.getDV().getTemperature();
   
-      if(temperature > MaxTemperature) {
-        context.setState(new MessageState());
+      if(temperature > thresholdTemperature) {
+        context.setState(nextState);
         return 0;
       }
       else
