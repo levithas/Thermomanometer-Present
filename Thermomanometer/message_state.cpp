@@ -5,7 +5,7 @@
 uint32_t MessageState::handle(Context& context) 
 {
   // HEX Message Display
-  context.getDV().showHexMessage(message, messagePosition);
+  context.getDV().showBinaryMessage(message, messagePosition);
   messagePosition++;
 
   if(messagePosition >= message.size())

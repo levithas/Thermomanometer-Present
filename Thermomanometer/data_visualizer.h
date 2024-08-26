@@ -121,7 +121,7 @@ class DataVisualizer
       Serial.print(pressure, 0);
       Serial.println(" Pa");
     }
-    void showHexMessage(const std::string &message, const uint8_t pos) {
+    void showBinaryMessage(const std::string &message, const uint8_t pos) {
       for(uint32_t i = 0;i<strip.numPixels(); i++)
       {
         uint32_t color = 0;
@@ -129,10 +129,10 @@ class DataVisualizer
         {
           color = strip.Color(0,255,255);
         }
-        else if(i < 10)
+        else if(i < 9)
         {
           // Encoding of the message
-          if((message[pos] >> (i-1)) & 1)
+          if((message[pos] >> (8-i)) & 1)
           {
             color = strip.Color(255,0,0);
           }
@@ -144,7 +144,7 @@ class DataVisualizer
         else
         {
           // Showing the position of the current character in the message
-          if(pos == i - 10)
+          if(pos == 19 - i)
           {
             color = strip.Color(0,0,255);
           }
